@@ -134,6 +134,16 @@ for index, row in df3.iterrows():
     rowww += 1
     print(counter)
 
+# new data frame with split value columns 
+new = df3["city_state"].str.split(",", n = 2, expand = True) 
+  
+# making separate column from new data frame 
+df3["city"]= new[0] 
+df3["state"]= new[1] 
+  
+# Dropping old columns 
+df3.drop(columns =["city_state"], inplace = True) 
+
 # saving final DataFrame to csv
 
 df3
